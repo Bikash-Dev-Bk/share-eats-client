@@ -4,18 +4,11 @@ import Person from "../Person/Person";
 
 const Team = () => {
   const [teams, setTeams] = useState([]);
-  const [teams2, setTeams2] = useState([]);
 
   useEffect(() => {
     fetch("team.json")
       .then((res) => res.json())
       .then((data) => setTeams(data));
-  }, []);
-
-  useEffect(() => {
-    fetch("team2.json")
-      .then((res) => res.json())
-      .then((data) => setTeams2(data));
   }, []);
 
   return (

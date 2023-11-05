@@ -1,6 +1,8 @@
+import PropTypes from "prop-types";
+
 const Person = ( { person } ) => {
     const { name, photo, designation} = person;
-    console.log(person)
+    
     return (
         <div className="flex flex-col justify-center items-center gap-5">
             <img src={photo} className="border-4 border-black rounded-full" alt="" />
@@ -9,5 +11,11 @@ const Person = ( { person } ) => {
         </div>
     );
 };
+
+
+Person.propTypes = {
+    person: PropTypes.object.isRequired,
+  };
+
 
 export default Person;
