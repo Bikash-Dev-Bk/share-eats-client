@@ -1,13 +1,21 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../../assets/logo.png";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
   const location = useLocation();
   const [activeRoute, setActiveRoute] = useState("");
 
   useEffect(() => {
-   
     setActiveRoute(location.pathname);
   }, [location.pathname]);
 
@@ -30,7 +38,7 @@ const Navbar = () => {
           className={`${
             activeRoute === "/availablefoods" &&
             "!text-[#429FFD] font-bold underline !bg-inherit"
-          }` }
+          }`}
         >
           Available Foods
         </NavLink>
@@ -65,33 +73,36 @@ const Navbar = () => {
             "!text-[#429FFD] font-bold underline !bg-inherit"
           }`}
         >
-         My Food Request
+          My Food Request
         </NavLink>
       </li>
 
-      {/* {user?.uid ? ( */}
-      <>
-        <li>
-          <NavLink className="my-2 lg:my-0 !border-[#429FFD] !border-2 !bg-transparent !text-[#429FFD]  font-semibold ">
-            Logout
-          </NavLink>
-        </li>
-      </>
-      {/* ) : ( */}
-      <>
-        <li>
-          <NavLink
-            to="/login"
-            className={`${
-              activeRoute === "/login" &&
-              "!text-[#429FFD] font-bold underline !bg-inherit"
-            }`}
-          >
-            Login
-          </NavLink>
-        </li>
-      </>
-      {/* )} */}
+      {user?.uid ? (
+        <>
+          <li>
+            <NavLink
+              className="my-2 lg:my-0 !border-[#429FFD] !border-2 !bg-transparent !text-[#429FFD]  font-semibold "
+              onClick={handleLogOut}
+            >
+              Logout
+            </NavLink>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <NavLink
+              to="/login"
+              className={`${
+                activeRoute === "/login" &&
+                "!text-[#429FFD] font-bold underline !bg-inherit"
+              }`}
+            >
+              Login
+            </NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
