@@ -1,7 +1,7 @@
 const AddFood = () => {
     return (
         <div>
-            <h2>This is Login</h2>
+            <h2>This is AddFood</h2>
         </div>
     );
 };
