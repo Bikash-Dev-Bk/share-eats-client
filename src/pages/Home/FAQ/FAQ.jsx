@@ -4,7 +4,7 @@ const FAQ = () => {
   return (
     <div className="max-w-7xl mx-auto my-32 p-5 md:p-4 lg:p-2">
       <h2 className="text-4xl font-bold text-center">Frequently Asked Questions</h2>
-      <p className="max-w-4xl mx-auto text-center text-lg mt-5 mb-24 p-5 md:p-4 lg:p-2" > If you can't find the answers you're looking for in our FAQs, please
+      <p className="max-w-4xl mx-auto text-justify md:text-center  text-lg mt-5 mb-24 " > If you can't find the answers you're looking for in our FAQs, please
         don't hesitate to reach out to our dedicated team. We're here to assist
         you and ensure your wedding event is everything you've envisioned. Your
         satisfaction is our priority, and we're excited to be part of your
