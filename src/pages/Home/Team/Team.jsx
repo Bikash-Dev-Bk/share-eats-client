@@ -1,6 +1,5 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import Person from "../Person/Person";
+import { useState, useEffect } from "react";
+import Person from "./Person/Person";
 
 const Team = () => {
   const [teams, setTeams] = useState([]);
