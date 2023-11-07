@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import FoodCard from "./FoodCard/FoodCard";
+import FoodCard from "../../../components/FoodCard/FoodCard";
 import { Link } from "react-router-dom";
 
 const FeaturedFoods = () => {
