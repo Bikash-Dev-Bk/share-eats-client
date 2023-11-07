@@ -4,10 +4,12 @@ const Person = ({ person }) => {
   const { name, photo, designation } = person;
 
   return (
-    <div className="flex flex-col justify-center items-center gap-5">
+    <div>
       <img src={photo} className="border-4 border-black rounded-full" alt="" />
-      <h2 className="text-2xl font-bold">{name}</h2>
-      <p className="font-semibold">{designation}</p>
+      <div className="mt-5">
+        <h2 className="text-2xl font-bold text-center">{name}</h2>
+        <p className="font-semibold text-center">{designation}</p>
+      </div>
     </div>
   );
 };

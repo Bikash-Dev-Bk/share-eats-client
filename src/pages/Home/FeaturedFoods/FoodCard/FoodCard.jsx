@@ -13,7 +13,6 @@ const FoodCard = ({ food }) => {
     additionalNotes,
   } = food;
 
-  console.log("food", food);
   return (
     <div className="shadow-xl rounded-xl hover:shadow-2xl p-4">
       <img src={foodImage} className=" w-full h-[160px] rounded-lg" alt="" />
