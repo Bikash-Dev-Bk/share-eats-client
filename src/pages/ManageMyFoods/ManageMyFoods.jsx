@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet";
 const ManageMyFoods = () => {
-    return (
-        <div>
-            <h2>This is ManageMyFoods</h2>
-        </div>
-    );
+  return (
+    <div>
+      <Helmet>
+        <title>Share Eats | Manage My Foods</title>
+      </Helmet>
+      <h2>This is ManageMyFoods</h2>
+    </div>
+  );
 };
 
 export default ManageMyFoods;

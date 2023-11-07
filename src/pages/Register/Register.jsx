@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { FcGoogle } from "react-icons/fc";
 import { BsPersonCircle } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
@@ -73,6 +74,9 @@ const Register = () => {
 
   return (
     <div className="bg_image hero bg-base-200 pt-6 pb-12">
+      <Helmet>
+        <title>Share Eats | Register</title>
+      </Helmet>
       <ToastContainer position="top-center" />
       <div className="hero-content flex-col">
         <div className="flex flex-col justify-center items-center text-center lg:text-left text-white">
