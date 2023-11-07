@@ -27,27 +27,47 @@ const router = createBrowserRouter([
       },
       {
         path: "/food/:id",
-        element: <PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <FoodDetails></FoodDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/foods/${params.id}`
+          ),
       },
       {
         path: "/addfood",
-        element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myfoodrequest",
-        element: <PrivateRoute><MyFoodRequest></MyFoodRequest></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyFoodRequest></MyFoodRequest>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/managemyfoods",
-        element: <PrivateRoute><ManageMyFoods></ManageMyFoods></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <ManageMyFoods></ManageMyFoods>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: <Register></Register>,
       },
     ],
   },

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const FoodCard = ({ food }) => {
   const {
-    id,
+    _id,
     foodImage,
     foodName,
     donatorImage,
@@ -13,6 +13,7 @@ const FoodCard = ({ food }) => {
     expiredDate,
     additionalNotes,
   } = food;
+
 
   return (
     <div className="shadow-xl rounded-xl hover:shadow-2xl ">
@@ -35,7 +36,7 @@ const FoodCard = ({ food }) => {
           <img src={donatorImage} className="h-[40px] rounded-full" alt="" />
           <p className="font-semibold">Donator: {donatorName}</p>
         </div>
-        <Link to={`food/${id}`} >
+        <Link to={`/food/${_id}`} >
           <button className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] btn-block mt-4">
             View Detail
           </button>
