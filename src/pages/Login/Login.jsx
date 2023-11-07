@@ -37,7 +37,7 @@ const Login = () => {
         form.reset();
         setTimeout(() => {
           navigate(location?.state ? location.state : "/");
-        }, 2000);
+        }, 1000);
       })
       .catch((error) => {
         console.error(error);
@@ -49,6 +49,23 @@ const Login = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
+        const userData = {
+          email: user.email,
+          name: user.displayName,
+          photo: user.photoURL,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => console.error(err));
 
         toast.success("Successfully login to the account!");
         setTimeout(() => {

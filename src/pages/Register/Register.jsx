@@ -26,6 +26,10 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    const user = { name, photo, email };
+
+    // console.log(user);
+
     //  password validation
     if (password.length < 6) {
       setPasswordError("Password should be at least 6 characters.");
@@ -45,6 +49,19 @@ const Register = () => {
 
     createUser(email, password)
       .then((result) => {
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => console.error(err));
+
         toast.success("User Created Successfully!");
         const createdUser = result.user;
         form.reset();
@@ -63,10 +80,28 @@ const Register = () => {
     signInWithGoogle()
       .then((result) => {
         const user = result.user;
+        const userData = {
+          email: user.email,
+          name: user.displayName,
+          photo: user.photoURL,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => console.error(err));
+
         toast.success("User Created Successfully!");
         setTimeout(() => {
           navigate("/");
-        }, 2000);
+        }, 1000);
         console.log(user);
       })
       .catch((error) => console.error(error));
