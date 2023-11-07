@@ -141,8 +141,8 @@ const Register = () => {
 
             <p className="text-rose-600">{passwordError}</p>
 
-            <div className="form-control mt-5 mt-6">
-              <button className="btn rounded-full  text-white bg-[#D70F64] hover:bg-transparent hover:border-2 hover:border-[#D70F64] hover:text-[#D70F64]">
+            <div className="form-control mt-6">
+              <button className="btn rounded-lg  text-white bg-[#D70F64] hover:bg-transparent hover:border-2 hover:border-[#D70F64] hover:text-[#D70F64]">
                 Register
               </button>
             </div>
@@ -153,7 +153,7 @@ const Register = () => {
             </p>
             <button
               onClick={handleSignInWithGoogle}
-              className="btn btn-outline rounded-full border-2 border-[#D70F64]  hover:bg-[#D70F64] hover:text-white hover:border-none "
+              className="btn btn-outline rounded-lg border-2 border-[#D70F64]  hover:bg-[#D70F64] hover:text-white hover:border-none "
             >
               <FcGoogle className="text-2xl" />{" "}
               <span className="ml-2">Google</span>{" "}
