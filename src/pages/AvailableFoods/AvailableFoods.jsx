@@ -17,7 +17,7 @@ const AvailableFoods = () => {
         <title>Share Eats | AvailableFoods</title>
       </Helmet>
       <h2 className="text-4xl font-bold text-center">Available Foods</h2>
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-20 ">
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20 ">
         {availableFoods.map((food) => (
           <FoodCard key={food.id} food={food}></FoodCard>
         ))}

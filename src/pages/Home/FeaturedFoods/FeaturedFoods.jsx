@@ -21,14 +21,14 @@ const FeaturedFoods = () => {
         generosity, and unity that define our platform.
       </p>
 
-      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 my-20 ">
-        {featuredFood.slice(0, 8).map((food) => (
+      <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20 ">
+        {featuredFood.slice(0, 6).map((food) => (
           <FoodCard key={food.id} food={food}></FoodCard>
         ))}
       </div>
       <div className="my-10 text-center">
         <Link to={"/availablefoods"}>
-          <button className="btn btn-primary normal-case text-2xl mt-2 text-center">
+          <button className="btn border-2 border-[#D70F64] bg-transparent text-[#D70F64] hover:bg-[#D70F64] hover:text-white px-10">
             See All
           </button>
         </Link>
