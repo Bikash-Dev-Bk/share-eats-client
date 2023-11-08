@@ -39,7 +39,7 @@ const FoodDetails = () => {
               <p className="text-sm">Expired Date: {expiredDate}</p>
               <button
                 onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
+                  document.getElementById("req_food").showModal()
                 }
                 className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] btn-block"
               >

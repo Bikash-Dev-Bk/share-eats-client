@@ -78,7 +78,7 @@ const Modal = ({ food }) => {
   };
 
   return (
-    <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+    <dialog id="req_food" className="modal modal-bottom sm:modal-middle">
       <div className="modal-box">
         <form onSubmit={handleFoodRequest} className="">
           <div className="mb-4 max-w-screen-xl mx-auto lg:px-10">
