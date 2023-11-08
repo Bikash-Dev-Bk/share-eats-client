@@ -5,8 +5,9 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useState } from "react";
 import { useEffect } from "react";
 import MyTable from "../../components/MyTable/MyTable";
-const ManageMyFoods = () => {
+import Swal from "sweetalert2";
 
+const ManageMyFoods = () => {
   const { user } = useContext(AuthContext);
 
   const [manageMyFoods, setManageMyFoods] = useState([]);
@@ -17,13 +18,44 @@ const ManageMyFoods = () => {
       .then((data) => setManageMyFoods(data));
   }, [user?.email]);
 
-  console.log("manageMyFoods", manageMyFoods);
-
   const columns = [
     { Header: "Food Name", accessor: "foodName" },
     { Header: "Food Quantity", accessor: "foodQuantity" },
     { Header: "Pickup Location", accessor: "pickupLocation" },
   ];
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#D70F64",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/foods/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Success!",
+                text: "Successfully Deleted Food!",
+                icon: "success",
+                confirmButtonText: "OK",
+              });
+
+              const remaining = manageMyFoods.filter((food) => food._id !== id);
+              setManageMyFoods(remaining);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -33,7 +65,11 @@ const ManageMyFoods = () => {
           <title>Share Eats | Manage My Foods</title>
         </Helmet>
         <div className="max-w-7xl mx-auto my-12 p-5 md:p-4 lg:p-2">
-          <MyTable columns={columns} data={manageMyFoods} />
+          <MyTable
+            columns={columns}
+            data={manageMyFoods}
+            handleDelete={handleDelete}
+          />
         </div>
       </div>
     </div>

@@ -70,6 +70,7 @@ const Modal = ({ food }) => {
             title: "Success!",
             text: "Successfully Requested Food",
             icon: "success",
+            confirmButtonColor: "#D70F64",
             confirmButtonText: "OK",
           });
         }

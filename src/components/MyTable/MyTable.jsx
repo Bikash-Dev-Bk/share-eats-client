@@ -4,7 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import "./MyTable.css";
 
-const MyTable = ({ columns, data }) => {
+const MyTable = ({ columns, data, handleDelete }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
 
@@ -20,6 +20,7 @@ const MyTable = ({ columns, data }) => {
           </tr>
         ))}
       </thead>
+      
       <tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
@@ -29,13 +30,25 @@ const MyTable = ({ columns, data }) => {
                 <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
               ))}
               <td className="flex items-center">
-                {/* Action buttons */}
-                <button onClick={() => onEdit(row.original)} className="btn
-                btn-circle btn-outline text-2xl border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none "><FaEdit /></button>
-                <button onClick={() => onDelete(row.original)} className="btn
-                btn-circle btn-outline text-2xl border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none mx-5"><RiDeleteBin6Line /></button>
-                <button onClick={() => onViewDetails(row.original)} className="btn
-                 btn-outline border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none">
+                <button
+                  onClick={() => handleUpdate(row.original._id)}
+                  className="btn
+                btn-circle btn-outline text-2xl border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none "
+                >
+                  <FaEdit />
+                </button>
+                <button
+                  onClick={() => handleDelete(row.original._id)}
+                  className="btn
+                btn-circle btn-outline text-2xl border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none mx-5"
+                >
+                  <RiDeleteBin6Line />
+                </button>
+                <button
+                  onClick={() => onViewDetails(row.original)}
+                  className="btn
+                 btn-outline border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none"
+                >
                   Manage
                 </button>
               </td>
@@ -48,8 +61,9 @@ const MyTable = ({ columns, data }) => {
 };
 
 MyTable.propTypes = {
-  columns: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
+  columns: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default MyTable;

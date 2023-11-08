@@ -64,6 +64,7 @@ const AddFood = () => {
             title: "Success!",
             text: "Successfully Added Food",
             icon: "success",
+            confirmButtonColor: "#D70F64",
             confirmButtonText: "OK",
           });
         }
