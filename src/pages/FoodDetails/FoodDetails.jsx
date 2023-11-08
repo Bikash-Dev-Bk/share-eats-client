@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import HeroPages from "../../components/HeroPages/HeroPages";
 import Modal from "../../components/Modal/Modal";
+import { Helmet } from "react-helmet";
 
 const FoodDetails = () => {
   const food = useLoaderData();
@@ -18,6 +19,9 @@ const FoodDetails = () => {
   return (
     <div>
       <HeroPages name="Food Details"></HeroPages>
+      <Helmet>
+        <title>Share Eats | Food Details</title>
+      </Helmet>
       <div className="max-w-7xl mx-auto flex gap-16 flex-col  justify-center items-center my-12 p-5 md:p-4 lg:p-2">
         <div className="flex flex-col justify-center items-center">
           <h2 className="text-2xl mb-2 font-bold">Donar Information</h2>
@@ -38,9 +42,7 @@ const FoodDetails = () => {
               </p>
               <p className="text-sm">Expired Date: {expiredDate}</p>
               <button
-                onClick={() =>
-                  document.getElementById("req_food").showModal()
-                }
+                onClick={() => document.getElementById("req_food").showModal()}
                 className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] btn-block"
               >
                 Request

@@ -27,7 +27,7 @@ const MyFoodRequest = () => {
           <title>Share Eats | My Food Request</title>
         </Helmet>
         {myRequestFoods.length === 0 ? (
-        <p className="text-4xl font-bold text-center my-5">You Don't Have Any Food Request!!</p>
+        <p className="text-4xl font-bold text-center my-5">You Haven't Requested Any Food Yet!!</p>
       ) :
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20 ">
           {myRequestFoods.map((food) => (

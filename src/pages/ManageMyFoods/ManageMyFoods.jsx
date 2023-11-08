@@ -64,13 +64,19 @@ const ManageMyFoods = () => {
         <Helmet>
           <title>Share Eats | Manage My Foods</title>
         </Helmet>
-        <div className="max-w-7xl mx-auto my-12 p-5 md:p-4 lg:p-2">
-          <MyTable
-            columns={columns}
-            data={manageMyFoods}
-            handleDelete={handleDelete}
-          />
-        </div>
+        {manageMyFoods.length === 0 ? (
+          <p className="text-4xl font-bold text-center my-5">
+            You Haven't Add Any Food Yet!!
+          </p>
+        ) : (
+          <div className="max-w-7xl mx-auto my-12 p-5 md:p-4 lg:p-2">
+            <MyTable
+              columns={columns}
+              data={manageMyFoods}
+              handleDelete={handleDelete}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

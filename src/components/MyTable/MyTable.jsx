@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const MyTable = ({ columns, data, handleDelete }) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
-  
+
   return (
     <table {...getTableProps()} className="table text-lg font-semibold ">
       <thead className="text-xl font-bold bg-[#E8399E]">
@@ -31,11 +31,8 @@ const MyTable = ({ columns, data, handleDelete }) => {
                 <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
               ))}
               <td className="flex items-center">
-                <Link
-                to={`/update/${row.original._id}`}
-                >
+                <Link to={`/update/${row.original._id}`}>
                   <button
-                    // onClick={() => handleUpdate(row.original._id)}
                     className="btn
                 btn-circle btn-outline text-2xl border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none "
                   >
@@ -49,13 +46,14 @@ const MyTable = ({ columns, data, handleDelete }) => {
                 >
                   <RiDeleteBin6Line />
                 </button>
-                <button
-                  onClick={() => onViewDetails(row.original)}
-                  className="btn
-                 btn-outline border-2 border-[#ffffff]  hover:bg-[#D70F64] hover:text-white hover:border-none"
-                >
-                  Manage
-                </button>
+                <Link to={`/manage/${row.original._id}`}>
+                  <button
+                    onClick={() => onViewDetails(row.original)}
+                    className="btn btn-outline border-2 border-[#ffffff] hover:bg-[#D70F64] hover:text-white hover:border-none"
+                  >
+                    Manage
+                  </button>
+                </Link>
               </td>
             </tr>
           );
