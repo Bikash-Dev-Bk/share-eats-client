@@ -1,0 +1,15 @@
+table {
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    color: #fff;
+}
+
+td {
+    padding: 15px;
+    background-color: #FF8EDF;
+    color: #050505;
+}
