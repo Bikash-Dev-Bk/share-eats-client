@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const RequestFoodCard = ({ food }) => {
+const RequestFoodCard = ({ food, handleDelete }) => {
   const {
     _id,
     foodImage,
@@ -11,6 +11,7 @@ const RequestFoodCard = ({ food }) => {
     requestDate,
     donationMoney,
   } = food;
+
 
   return (
     <div className="shadow-xl rounded-xl hover:shadow-2xl ">
@@ -26,7 +27,9 @@ const RequestFoodCard = ({ food }) => {
           <p>Status: Available</p>
         </div>
 
-        <button className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] btn-block mt-4">
+        <button 
+        onClick={() => handleDelete(_id)}
+        className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] btn-block mt-4">
           Cancel Request
         </button>
       </div>
@@ -36,6 +39,7 @@ const RequestFoodCard = ({ food }) => {
 
 RequestFoodCard.propTypes = {
   food: PropTypes.object.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default RequestFoodCard;
