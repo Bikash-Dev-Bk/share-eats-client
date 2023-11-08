@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import PropTypes from "prop-types";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Modal = ({ food }) => {
@@ -18,6 +18,14 @@ const Modal = ({ food }) => {
 
   const { user } = useContext(AuthContext);
 
+  const [userDb, setUserDb] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setUserDb(data));
+  }, [user?.email]);
+
   const date = new Date();
   const formattedDate = date.toLocaleString("en-US", {
     year: "numeric",
@@ -32,10 +40,13 @@ const Modal = ({ food }) => {
 
     const form = event.target;
 
-    const userEmail = user?.email;
+    const userEmail = userDb?.email;
+    const userName = userDb?.name;
+    const userPhoto = userDb?.photo;
     const requestDate = form.req_date.value;
     const donationMoney = form.donation_money.value;
     const additionalNotes = form.additional_notes.value;
+    const foodStatus = form.food_status.value;
 
     const food = {
       foodImage,
@@ -47,8 +58,11 @@ const Modal = ({ food }) => {
       expiredDate,
       additionalNotes,
       userEmail,
+      userName,
+      userPhoto,
       requestDate,
-      donationMoney
+      donationMoney,
+      foodStatus
     };
 
     console.log(food);
@@ -246,6 +260,23 @@ const Modal = ({ food }) => {
               defaultValue={additionalNotes}
             ></textarea>
           </div>
+          <div className="mb-4 max-w-screen-xl mx-auto lg:px-10">
+            <label
+              className="block text-[#D70F64] font-bold mb-2"
+              htmlFor="food_status"
+            >
+              Food Status
+            </label>
+            <input
+              className=" rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight ring-1 focus:ring-2 focus:ring-[#D70F64]"
+              name="food_status"
+              type="text"
+              defaultValue="Available"
+              placeholder="Enter Pickup Location"
+              readOnly
+              required
+            />
+          </div>
           <div className="flex items-center justify-center">
             <input
               type="submit"
@@ -256,7 +287,6 @@ const Modal = ({ food }) => {
         </form>
         <div className="modal-action">
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
