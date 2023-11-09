@@ -35,7 +35,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/food/${params.id}`),
+          fetch(`https://share-eats-server.vercel.app/food/${params.id}`),
       },
       {
         path: "/addfood",
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/food/${params.id}`),
+          fetch(`https://share-eats-server.vercel.app/food/${params.id}`),
       },
       {
         path: "/manage/:name",
@@ -79,7 +79,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/foodrequest/${params.name}`),
+          fetch(
+            `https://share-eats-server.vercel.app/foodrequest/${params.name}`
+          ),
       },
       {
         path: "/login",

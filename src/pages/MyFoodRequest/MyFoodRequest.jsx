@@ -12,7 +12,7 @@ const MyFoodRequest = () => {
   const [myRequestFoods, setMyRequestFoods] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/foodrequests/${user?.email}`)
+    fetch(`https://share-eats-server.vercel.app/foodrequests/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyRequestFoods(data));
   }, [user?.email]);
@@ -28,7 +28,7 @@ const MyFoodRequest = () => {
       confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/foodrequests/${id}`, {
+        fetch(`https://share-eats-server.vercel.app/foodrequests/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

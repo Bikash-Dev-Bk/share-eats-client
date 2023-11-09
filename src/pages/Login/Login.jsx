@@ -54,7 +54,7 @@ const Login = () => {
           name: user.displayName,
           photo: user.photoURL,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://share-eats-server.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

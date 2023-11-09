@@ -21,7 +21,7 @@ const Modal = ({ food }) => {
   const [userDb, setUserDb] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://share-eats-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setUserDb(data));
   }, [user?.email]);
@@ -62,14 +62,14 @@ const Modal = ({ food }) => {
       userPhoto,
       requestDate,
       donationMoney,
-      foodStatus
+      foodStatus,
     };
 
     console.log(food);
 
     form.reset();
 
-    fetch("http://localhost:5000/foodrequests", {
+    fetch("https://share-eats-server.vercel.app/foodrequests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

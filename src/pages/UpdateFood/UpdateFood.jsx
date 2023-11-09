@@ -19,7 +19,6 @@ const UpdateFood = () => {
     expiredDate,
     additionalNotes,
   } = food;
-  
 
   const handleUpdateFood = (event) => {
     event.preventDefault();
@@ -54,7 +53,7 @@ const UpdateFood = () => {
 
     form.reset();
 
-    fetch(`http://localhost:5000/foods/${_id}`, {
+    fetch(`https://share-eats-server.vercel.app/foods/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +86,7 @@ const UpdateFood = () => {
         </Helmet>
 
         <form
-            onSubmit={handleUpdateFood}
+          onSubmit={handleUpdateFood}
           className="shadow-lg shadow-[#D70F64] rounded-xl mb-24 lg:px-2 px-5 pt-6 pb-8 hover:shadow-2xl hover:shadow-[#D70F64] mt-10"
         >
           {/* Food Info  */}
@@ -210,7 +209,7 @@ const UpdateFood = () => {
               className="ring-1 rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight  focus:ring-2 focus:ring-[#D70F64]"
               name="donator_email"
               type="text"
-                defaultValue={donatorEmail}
+              defaultValue={donatorEmail}
               readOnly
             />
           </div>

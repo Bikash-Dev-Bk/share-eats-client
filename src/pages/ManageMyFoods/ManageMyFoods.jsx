@@ -13,7 +13,7 @@ const ManageMyFoods = () => {
   const [manageMyFoods, setManageMyFoods] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/foods/${user?.email}`)
+    fetch(`https://share-eats-server.vercel.app/foods/${user?.email}`)
       .then((res) => res.json())
       .then((data) => setManageMyFoods(data));
   }, [user?.email]);
@@ -35,7 +35,7 @@ const ManageMyFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/foods/${id}`, {
+        fetch(`https://share-eats-server.vercel.app/foods/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

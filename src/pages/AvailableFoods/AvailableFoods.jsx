@@ -9,7 +9,7 @@ const AvailableFoods = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/foods")
+    fetch("https://share-eats-server.vercel.app/foods")
       .then((res) => res.json())
       .then((data) => setAvailableFoods(data));
   }, []);
@@ -33,7 +33,7 @@ const AvailableFoods = () => {
         <div className="mb-4 max-w-3xl mx-auto flex gap-2 justify-between items-center">
           <input
             type="text"
-            className=" rounded w-full py-3 px-3  bg-transparent outline-none leading-tight  ring-2 ring-[#D70F64]"
+            className=" rounded-xl w-full py-3 px-3  bg-transparent outline-none leading-tight  ring-2 ring-[#D70F64]"
             placeholder="Search Your Food"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
@@ -46,17 +46,13 @@ const AvailableFoods = () => {
           </button>
         </div>
 
-        {filteredFoods.length === 0 ? (
-          <p className="text-xl md:text-3xl font-bold text-center text-[#D70F64] my-12" >
-            No matching results found.
-          </p>
-        ) : (
-          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20">
-            {filteredFoods.map((food) => (
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-20">
+          {(filteredFoods.length > 0 ? filteredFoods : availableFoods).map(
+            (food) => (
               <FoodCard key={food._id} food={food}></FoodCard>
-            ))}
-          </div>
-        )}
+            )
+          )}
+        </div>
       </div>
     </div>
   );

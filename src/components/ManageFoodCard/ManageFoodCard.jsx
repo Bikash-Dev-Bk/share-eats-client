@@ -17,14 +17,13 @@ const ManageFoodCard = ({ manageFood }) => {
   const [currentFoodStatus, setCurrentFoodStatus] = useState(foodStatus);
 
   const handleUpdateFoodStatus = (_id) => {
-
-    const newFoodStatus = 'Delivered';
+    const newFoodStatus = "Delivered";
 
     const food = {
       foodStatus: newFoodStatus,
     };
 
-    fetch(`http://localhost:5000/foodrequests/${_id}`, {
+    fetch(`https://share-eats-server.vercel.app/foodrequests/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -47,14 +46,14 @@ const ManageFoodCard = ({ manageFood }) => {
       })
       .catch((err) => console.error(err));
 
-
-      fetch(`http://localhost:5000/food/${foodName}`, {
-        method: "DELETE",
-      })
+    fetch(`https://share-eats-server.vercel.app/food/${foodName}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
-      .then((data) => {console.log(data)})
+      .then((data) => {
+        console.log(data);
+      })
       .catch((err) => console.error(err));
-
   };
 
   return (
@@ -66,7 +65,9 @@ const ManageFoodCard = ({ manageFood }) => {
       />
       <div className="p-4">
         <div className="mb-5 space-y-2">
-          <h2 className="text-lg text-center font-bold">Food Name: {foodName}</h2>
+          <h2 className="text-lg text-center font-bold">
+            Food Name: {foodName}
+          </h2>
         </div>
         <div>
           <h2 className="font-bold text-2xl text-center mb-5">
@@ -83,9 +84,10 @@ const ManageFoodCard = ({ manageFood }) => {
               <p className="text-sm">Email: {userEmail}</p>
               <p className="text-sm">Request Date: {requestDate}</p>
             </div>
-            <button 
-            onClick={ () => handleUpdateFoodStatus(_id) }
-            className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] mt-4">
+            <button
+              onClick={() => handleUpdateFoodStatus(_id)}
+              className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] mt-4"
+            >
               {currentFoodStatus}
             </button>
           </div>

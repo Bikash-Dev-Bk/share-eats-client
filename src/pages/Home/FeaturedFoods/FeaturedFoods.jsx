@@ -6,7 +6,7 @@ const FeaturedFoods = () => {
   const [featuredFood, setFeaturedFood] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/foods")
+    fetch("https://share-eats-server.vercel.app/foods")
       .then((res) => res.json())
       .then((data) => {
         const sortedData = data.sort((a, b) => b.foodQuantity - a.foodQuantity);
