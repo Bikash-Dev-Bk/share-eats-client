@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import HeroPages from "../HeroPages/HeroPages";
+import HeroPages from "../../components/HeroPages/HeroPages";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 

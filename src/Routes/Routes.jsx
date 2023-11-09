@@ -10,8 +10,8 @@ import ManageMyFoods from "../pages/ManageMyFoods/ManageMyFoods";
 import AvailableFoods from "../pages/AvailableFoods/AvailableFoods";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import PrivateRoute from "./PrivateRoute";
-import UpdateFood from "../components/UpdateFood/UpdateFood";
 import ManageSingleFood from "../pages/ManageSingleFood/ManageSingleFood";
+import UpdateFood from "../pages/UpdateFood/UpdateFood";
 
 const router = createBrowserRouter([
   {
