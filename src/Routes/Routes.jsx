@@ -11,7 +11,7 @@ import AvailableFoods from "../pages/AvailableFoods/AvailableFoods";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateFood from "../components/UpdateFood/UpdateFood";
-import ManageSingleFood from "../components/ManageSingleFood/ManageSingleFood";
+import ManageSingleFood from "../pages/ManageSingleFood/ManageSingleFood";
 
 const router = createBrowserRouter([
   {
