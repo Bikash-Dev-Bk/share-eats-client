@@ -46,9 +46,8 @@ const MyTable = ({ columns, data, handleDelete }) => {
                 >
                   <RiDeleteBin6Line />
                 </button>
-                <Link to={`/manage/${row.original._id}`}>
+                <Link to={`/manage/${row.original.foodName}`}>
                   <button
-                    onClick={() => onViewDetails(row.original)}
                     className="btn btn-outline border-2 border-[#ffffff] hover:bg-[#D70F64] hover:text-white hover:border-none"
                   >
                     Manage
