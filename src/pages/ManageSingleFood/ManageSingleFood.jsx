@@ -6,8 +6,6 @@ import ManageFoodCard from "../../components/ManageFoodCard/ManageFoodCard";
 const ManageSingleFood = () => {
   const manageFoods = useLoaderData();
 
-  console.log("ManageSingleFood", manageFoods);
-
   return (
     <div>
       <HeroPages name="Manage Single Food"></HeroPages>

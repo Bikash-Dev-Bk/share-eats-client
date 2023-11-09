@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const ManageFoodCard = ({ manageFood }) => {
@@ -13,16 +14,15 @@ const ManageFoodCard = ({ manageFood }) => {
     foodStatus,
   } = manageFood;
 
+  const [currentFoodStatus, setCurrentFoodStatus] = useState(foodStatus);
 
   const handleUpdateFoodStatus = (_id) => {
 
-    const foodStatus = 'Delivered';
+    const newFoodStatus = 'Delivered';
 
     const food = {
-      foodStatus,
+      foodStatus: newFoodStatus,
     };
-
-    console.log(food);
 
     fetch(`http://localhost:5000/foodrequests/${_id}`, {
       method: "PATCH",
@@ -35,6 +35,7 @@ const ManageFoodCard = ({ manageFood }) => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
+          setCurrentFoodStatus(newFoodStatus);
           Swal.fire({
             title: "Success!",
             text: "Successfully Delivered Food",
@@ -76,7 +77,7 @@ const ManageFoodCard = ({ manageFood }) => {
             <button 
             onClick={ () => handleUpdateFoodStatus(_id) }
             className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] mt-4">
-              {foodStatus}
+              {currentFoodStatus}
             </button>
           </div>
         </div>

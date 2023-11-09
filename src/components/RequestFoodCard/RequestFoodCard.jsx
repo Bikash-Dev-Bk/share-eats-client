@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const RequestFoodCard = ({ food, handleDelete }) => {
+const RequestFoodCard = ({ food, handleCancelRequest }) => {
   const {
     _id,
     foodImage,
@@ -32,7 +32,7 @@ const RequestFoodCard = ({ food, handleDelete }) => {
         </div>
 
         <button
-          onClick={() => handleDelete(_id)}
+          onClick={() => handleCancelRequest(_id)}
           disabled={foodStatus === 'Delivered'}
           className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] btn-block mt-4"
         >
@@ -45,7 +45,7 @@ const RequestFoodCard = ({ food, handleDelete }) => {
 
 RequestFoodCard.propTypes = {
   food: PropTypes.object.isRequired,
-  handleDelete: PropTypes.func.isRequired,
+  handleCancelRequest: PropTypes.func.isRequired,
 };
 
 export default RequestFoodCard;

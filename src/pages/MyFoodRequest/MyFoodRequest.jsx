@@ -17,7 +17,7 @@ const MyFoodRequest = () => {
       .then((data) => setMyRequestFoods(data));
   }, [user?.email]);
 
-  const handleDelete = (id) => {
+  const handleCancelRequest = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -25,7 +25,7 @@ const MyFoodRequest = () => {
       showCancelButton: true,
       confirmButtonColor: "#D70F64",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, Cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/foodrequests/${id}`, {
@@ -39,6 +39,7 @@ const MyFoodRequest = () => {
                 title: "Success!",
                 text: "Successfully Canceled Request!",
                 icon: "success",
+                confirmButtonColor: "#D70F64",
                 confirmButtonText: "OK",
               });
 
@@ -70,7 +71,7 @@ const MyFoodRequest = () => {
               <RequestFoodCard
                 key={food._id}
                 food={food}
-                handleDelete={handleDelete}
+                handleCancelRequest={handleCancelRequest}
               ></RequestFoodCard>
             ))}
           </div>
