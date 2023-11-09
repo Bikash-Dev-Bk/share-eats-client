@@ -46,6 +46,15 @@ const ManageFoodCard = ({ manageFood }) => {
         }
       })
       .catch((err) => console.error(err));
+
+
+      fetch(`http://localhost:5000/food/${foodName}`, {
+        method: "DELETE",
+      })
+      .then((res) => res.json())
+      .then((data) => {console.log(data)})
+      .catch((err) => console.error(err));
+
   };
 
   return (
