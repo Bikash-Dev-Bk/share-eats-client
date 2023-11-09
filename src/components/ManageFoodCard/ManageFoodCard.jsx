@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
+import Swal from "sweetalert2";
 
 const ManageFoodCard = ({ manageFood }) => {
   const {
+    _id,
     foodImage,
     foodName,
     userEmail,
@@ -10,6 +12,40 @@ const ManageFoodCard = ({ manageFood }) => {
     requestDate,
     foodStatus,
   } = manageFood;
+
+
+  const handleUpdateFoodStatus = (_id) => {
+
+    const foodStatus = 'Delivered';
+
+    const food = {
+      foodStatus,
+    };
+
+    console.log(food);
+
+    fetch(`http://localhost:5000/foodrequests/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(food),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Successfully Delivered Food",
+            icon: "success",
+            confirmButtonColor: "#D70F64",
+            confirmButtonText: "OK",
+          });
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div className="shadow-xl rounded-xl hover:shadow-2xl">
@@ -37,7 +73,9 @@ const ManageFoodCard = ({ manageFood }) => {
               <p className="text-sm">Email: {userEmail}</p>
               <p className="text-sm">Request Date: {requestDate}</p>
             </div>
-            <button className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] mt-4">
+            <button 
+            onClick={ () => handleUpdateFoodStatus(_id) }
+            className="btn bg-[#D70F64] text-white hover:border-2 hover:border-[#D70F64] hover:bg-transparent hover:text-[#D70F64] mt-4">
               {foodStatus}
             </button>
           </div>
