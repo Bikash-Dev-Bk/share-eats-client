@@ -8,7 +8,10 @@ const FeaturedFoods = () => {
   useEffect(() => {
     fetch("http://localhost:5000/foods")
       .then((res) => res.json())
-      .then((data) => setFeaturedFood(data));
+      .then((data) => {
+        const sortedData = data.sort((a, b) => b.foodQuantity - a.foodQuantity);
+        setFeaturedFood(sortedData);
+      });
   }, []);
 
   return (
