@@ -174,7 +174,7 @@ const AddFood = () => {
               className=" rounded w-full py-2 px-3 ring-gray-300 bg-transparent outline-none leading-tight ring-1 focus:ring-2 focus:ring-[#D70F64]"
               name="expired_date"
               type="text"
-              placeholder="2023-12-10"
+              placeholder="DD/MM/YYYY"
               required
             />
           </div>
